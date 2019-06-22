@@ -20,6 +20,9 @@ public class Employee {
 	private String lastName;	
 	@Column(name="company")
 	private String company;
+	public Employee(){
+		
+	}
 	public Employee(String firstName, String lastName, String company) {
 		this.firstName = firstName;
 		this.lastName = lastName;

@@ -18,7 +18,17 @@ public class EmployeeDriver {
 		  Employee emp=new Employee("Sonam","Gadekari","sonam.gadekari@gmail.com");
 		  session.save(emp);
 		  session.getTransaction().commit();
-		  emp.getId();
+		  int id=emp.getId();		  
+		  session=factory.getCurrentSession();		 
+		  session.beginTransaction();
+		  Employee emp1=session.get(Employee.class, id);
+		  System.out.println(emp1.getFirstName());
+		  session.getTransaction().commit();
+		  session=factory.getCurrentSession();
+		  session.beginTransaction();
+		  Employee emp2=session.get(Employee.class, id);
+		  session.delete(emp2);
+		  session.getTransaction().commit();
 		}
 		catch(Exception ex)
 		{
